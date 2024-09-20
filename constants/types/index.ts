@@ -24,7 +24,11 @@ export interface contexttype {
         password: string;
     }) => Promise<void>;
     logout: () => Promise<void>;
-    isLoggedIn: () => Promise<string | null>
+    isLoggedIn: () => Promise<string | null>;
+    setSelectedCategory: Dispatch<SetStateAction<string>>;
+    selectedCategory: string;
+    setRecipeData: Dispatch<SetStateAction<recipe[]>>;
+    recipeData: recipe[];
 }
 
 export type routetype = {
@@ -38,4 +42,23 @@ export type draweritemtype = {
     name: string;
     title: string;
     icon: keyof typeof Feather.glyphMap;
+}
+
+export type recipe = {
+    id: number;
+    name: string;
+    cuisine: string;
+    difficulty: string;
+    tags: string[];
+    ingredients: string[];
+    mealType: string[];
+    instructions: string[];
+    caloriesPerServing: number;
+    prepTimeMinutes: number;
+    cookTimeMinutes: number;
+    servings: number;
+    userId: number;
+    image: string;
+    rating: number;
+    reviewCount: number;
 }

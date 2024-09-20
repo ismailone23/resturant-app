@@ -3,6 +3,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from 'expo-font'
 import useAuth from '@/hooks/useAuth';
 import AuthProvider from '@/contexts/AuthContext';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 const RootLayout = () => {
     const [fontsLoaded, error] = useFonts({

@@ -10,7 +10,7 @@ export default function Loading() {
             height: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#fff'
+            // backgroundColor: '#fff'
         }}>
             <ActivityIndicator size={'large'} color={'#ffcb3b'} />
         </View>

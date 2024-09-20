@@ -27,7 +27,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
-                <View>
+                <View className="mb-4">
                     <ImageBackground source={require('../assets/images/background.jpg')} className="w-full h-44 flex justify-center items-center" >
                         <Image source={require('../assets/images/model.png')} className="w-16 h-16 rounded-full" />
                         <Text className="text-lg font-rmedium">John Doe</Text>
@@ -36,17 +36,22 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
                 </View>
                 {
                     draweritems.map(({ icon, name, title }, i) => (
-                        <DrawerItem key={i} style={{
-                            width: '100%',
-                            padding: 0,
-                            marginLeft: 0,
-                            backgroundColor: pathname === `/${name}` ? '#ffcb3b' : 'white'
-                        }}
-                            label={title} labelStyle={{
-                                marginLeft: -20,
+                        <DrawerItem key={i}
+                            style={{
+                                width: '100%',
+                                padding: 0,
+                                borderRadius: 0,
+                                marginLeft: 0,
+                                backgroundColor: pathname === `/${name}` ? '#ffcb3b' : 'white'
+                            }}
+                            label={title}
+                            labelStyle={{
+                                marginLeft: -17,
+                                color: '#000',
                                 fontSize: 15
-                            }} icon={() => (
-                                <Feather name={icon} color={'#000'} size={18} />
+                            }}
+                            icon={() => (
+                                <Feather style={{ marginLeft: 10 }} name={icon} color={'#000'} size={18} />
                             )}
                             onPress={() => router.push(`/${name}`)}
                         />

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { contexttype } from "@/constants/types";
+import { contexttype, recipe } from "@/constants/types";
 import { USER_TOKEN } from "@/constants";
 export const AuthContext = createContext<contexttype | null>(null);
 
@@ -8,6 +8,8 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState<null | { error: boolean; txt: string }>(null)
     const [usertoken, setUsertoken] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState<string>('All')
+    const [recipeData, setRecipeData] = useState<recipe[]>([])
 
     const signin = async ({ phone, password }: {
         phone: string;
@@ -24,7 +26,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     }
     const isLoggedIn = async () => {
         const token = await AsyncStorage.getItem(USER_TOKEN)
-        console.log('checking');
+
         if (token) {
             setUsertoken(token)
             return 'token'
@@ -62,7 +64,11 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         loading,
         setLoading,
         usertoken,
-        isLoggedIn
+        isLoggedIn,
+        selectedCategory,
+        setSelectedCategory,
+        recipeData,
+        setRecipeData
     }
     return (
         <AuthContext.Provider value={contextvalue}>
