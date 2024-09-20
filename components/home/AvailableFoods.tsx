@@ -5,7 +5,15 @@ import { recipe } from '@/constants/types'
 import FoodData from './FoodData'
 import Category from './Category'
 
-export default function AvailableFoods({ recipeData, selectedCategory }: { recipeData: recipe[]; selectedCategory: string }) {
+export default function AvailableFoods({
+    recipeData,
+    selectedCategory,
+    handlePresentModalPress
+}: {
+    recipeData: recipe[];
+    selectedCategory: string;
+    handlePresentModalPress: (id: number) => void
+}) {
     const [refreshing, setRefreshing] = useState(false)
 
     const onRefresh = () => {
@@ -33,7 +41,7 @@ export default function AvailableFoods({ recipeData, selectedCategory }: { recip
                 keyExtractor={item => "#" + item.id.toString()}
                 ListHeaderComponent={() => <Category />}
                 numColumns={2}
-                renderItem={({ item }) => <FoodData {...item} />}
+                renderItem={({ item }) => <FoodData handlePresentModalPress={handlePresentModalPress} recipe={item} />}
             />
         </View>
     )

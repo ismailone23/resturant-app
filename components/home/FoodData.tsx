@@ -5,17 +5,23 @@ import { Rating } from '@kolking/react-native-rating';
 
 
 
-export default function FoodData({ name, image, tags, reviewCount, id, rating }: recipe) {
+export default function FoodData({ recipe: { name, image, tags, reviewCount, id, rating },
+    handlePresentModalPress
+}: {
+    recipe: recipe,
+    handlePresentModalPress: (id: number) => void
+}) {
     return (
-        <TouchableOpacity activeOpacity={0.9} style={[
+        <TouchableOpacity onPress={() => handlePresentModalPress(id)} activeOpacity={0.9} style={[
             id % 2 === 0
                 ? {
                     paddingLeft: 10,
                 } : {
                     paddingRight: 10,
-                }, {
+                },
+            {
                 marginVertical: 4,
-                overflow: 'hidden'
+                overflow: 'hidden',
             }
         ]} className='w-[48%] min-h-[12rem] border-gray-300'>
             <Image source={{ uri: image }} className='w-[100%] rounded-lg h-40 object-cover' />
