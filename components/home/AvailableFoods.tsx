@@ -15,10 +15,8 @@ export default function AvailableFoods({ recipeData, selectedCategory }: { recip
     const filterRecipe: recipe[] = useMemo(() => {
         const mData = recipeData;
         if (selectedCategory === 'All') {
-            console.log('all');
             return recipeData
         };
-        console.log('custom');
         return mData.filter(fData => fData.tags.includes(selectedCategory))
     }, [selectedCategory])
 

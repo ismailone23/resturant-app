@@ -28,10 +28,10 @@ export default function Category() {
     }, [recipeData])
 
     return (
-        <View style={{ flex: 1, marginTop: 5 }}>
+        <View style={{ flex: 1, marginTop: 5, marginRight: 10 }}>
             <Text className='text-xl mb-2 font-rregular'>All Categories</Text>
             <FlatList data={memodata}
-                ListEmptyComponent={() => (<Text>Empty</Text>)}
+                ListEmptyComponent={() => (<Text className='italic text-sm text-gray-500'>No Data</Text>)}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 horizontal
                 windowSize={2}
